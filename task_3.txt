@@ -1,0 +1,68 @@
+3. Attack Pattern Detection 
+Write a Bash or Python script to detect potential attack patterns in the logs. Your script should analyze 
+the logs and flag suspicious IPs or behaviors. 
+Output: The script should generate a summary of potential attack patterns, including flagged IPs, 
+abnormal request frequencies, or other detected anomalies. 
+
+-------
+
+$ ./task_3.sh                                                                                                                ok | 11m 55s | 21:07:22
+=== Suspicious Activity Report ===
+Log File: nginx_access.log
+
+[!] IPs with high request rate per minutes (possible DoS):
+Count: 96 | Ip: 145.98.68.30,   Minute : 17/May/2025:08
+Count: 91 | Ip: 145.98.68.30,   Minute : 17/May/2025:09
+Count: 88 | Ip: 49.17.221.77,   Minute : 17/May/2025:09
+Count: 87 | Ip: 221.34.171.155,   Minute : 17/May/2025:09
+Count: 87 | Ip: 110.105.174.63,   Minute : 17/May/2025:08
+Count: 85 | Ip: 221.34.171.155,   Minute : 17/May/2025:08
+Count: 81 | Ip: 32.90.145.204,   Minute : 17/May/2025:09
+Count: 79 | Ip: 110.105.174.63,   Minute : 17/May/2025:09
+Count: 78 | Ip: 49.17.221.77,   Minute : 17/May/2025:08
+Count: 76 | Ip: 24.74.238.114,   Minute : 17/May/2025:09
+Count: 74 | Ip: 24.74.238.114,   Minute : 17/May/2025:08
+Count: 73 | Ip: 49.217.128.165,   Minute : 17/May/2025:09
+Count: 73 | Ip: 49.217.128.165,   Minute : 17/May/2025:08
+Count: 70 | Ip: 32.90.145.204,   Minute : 17/May/2025:08
+
+[!] IPs with excessive 4xx/5xx error responses:
+Count: 135 | Ip: 145.98.68.30,   Status: 503
+Count: 134 | Ip: 32.90.145.204,   Status: 503
+Count: 134 | Ip: 24.74.238.114,   Status: 503
+Count: 129 | Ip: 110.105.174.63,   Status: 503
+Count: 123 | Ip: 221.34.171.155,   Status: 503
+Count: 121 | Ip: 49.17.221.77,   Status: 503
+Count: 121 | Ip: 221.34.171.155,   Status: 429
+Count: 118 | Ip: 49.217.128.165,   Status: 503
+Count: 117 | Ip: 188.230.178.192,   Status: 503
+Count: 114 | Ip: 49.217.128.165,   Status: 429
+Count: 114 | Ip: 24.74.238.114,   Status: 429
+Count: 110 | Ip: 110.105.174.63,   Status: 429
+Count: 108 | Ip: 49.17.221.77,   Status: 429
+Count: 108 | Ip: 188.230.178.192,   Status: 429
+Count: 106 | Ip: 145.98.68.30,   Status: 429
+Count: 102 | Ip: 32.90.145.204,   Status: 429
+
+[!] Top 10 requests to suspicious URLs:
+Pattern: /
+Count: 383 | Ip: 221.34.171.155,   Endpoint: /login
+Count: 380 | Ip: 145.98.68.30,   Endpoint: /login
+Count: 361 | Ip: 110.105.174.63,   Endpoint: /login
+Count: 355 | Ip: 24.74.238.114,   Endpoint: /login
+Count: 354 | Ip: 32.90.145.204,   Endpoint: /login
+Count: 352 | Ip: 49.217.128.165,   Endpoint: /login
+Count: 350 | Ip: 49.17.221.77,   Endpoint: /login
+Count: 315 | Ip: 188.230.178.192,   Endpoint: /login
+
+[!] Top 10 most active IPs:
+Count: 383 | Ip: 221.34.171.155
+Count: 380 | Ip: 145.98.68.30
+Count: 361 | Ip: 110.105.174.63
+Count: 355 | Ip: 24.74.238.114
+Count: 354 | Ip: 32.90.145.204
+Count: 352 | Ip: 49.217.128.165
+Count: 350 | Ip: 49.17.221.77
+Count: 315 | Ip: 188.230.178.192
+Count: 1 | Ip: 99.82.231.75
+Count: 1 | Ip: 99.79.172.195

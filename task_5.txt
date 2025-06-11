@@ -1,0 +1,3 @@
+The high frequency of 4xx and 5xx responses indicates client errors or backend instability.
+I would configure CDN caching rules to serve stale content on 5xx errors (in case frequent crashes/overloads).
+That could reduce repeated load on origin servers and improving availability during backend issues.

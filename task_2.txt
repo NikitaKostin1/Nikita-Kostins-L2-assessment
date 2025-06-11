@@ -1,0 +1,30 @@
+2. Debugging the Python Script 
+The provided python_monitor.py script is meant to monitor a log file and alert if error rates exceed 10% 
+in a 5-minute window. However, it contains intentional bugs. Your task is to: 
+●  Fix the script and ensure it works correctly. 
+●  Write a short explanation describing the bugs you identified and how you fixed them.
+
+---------------------
+
+task_2.py - Fixed and a bit reworked script.
+While bug fixing adjsuted the initial script by my coding style for your consideration. Persisted the initial logic by opportunity.
+
+1. The original `parse_log_line` function returned string `status` variable, converted to int for comparasming further:
+return {
+    'timestamp': timestamp,
+    'status': int(status),
+    'ip': ip
+}
+
+2. Original regex pattern contained bugs:
+Original: pattern = r'(\d+\.\d+\.\d+\.\d+) - (\w+) \[(\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2} \+\d{4})\] "(\w+\.\w+\.\w+)" "(\w+ /.+ HTTP/\d\.\d)" (\d+) (\d+) (\d+)'
+Fixed: pattern = r'(\d+\.\d+\.\d+\.\d+) - (\w+) \[(\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2} \+\d{4})\] "([^"]+)" "([^"]+)" (\d+) (\d+) (\d+)'
+"(\w+\.\w+\.\w+)" - Breaks if more than 3 subdomains or special characters (dashes) in domain: "([^"]+)"
+"(\w+ /.+ HTTP/\d\.\d)" - Way too specific format, we care about the whole thing in this feild: "([^"]+)"
+
+3. Logs were not ordered by timestamp - applied order logic in script. 
+
+4. The origianl monitor_logs() function script "for line in lines: " forced to repeat code blocks and create variables more than necessary.
+
+5. The original script managed timestamps and resets manually with `current_window_start`, causing unclear and error-prone logic.
+Added Window class to encapsulate window stateand related methods, eg add(), is_within_window(), calculate_error_rate() for clean abstraction.

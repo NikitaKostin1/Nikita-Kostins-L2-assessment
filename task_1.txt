@@ -1,0 +1,10 @@
+1. Nginx Log Analysis 
+Analyze the provided nginx_access.log file (Go through some initial logs to understand the pattern). 
+Write a Python script to: 
+●  Identify the top 5 IP addresses by request count. 
+●  Calculate the percentage of requests with status codes in the 400-599 range. 
+●  Find the average response size in bytes for GET requests. 
+
+
+Function print_log_statistics() in python_monitor.py file. Run to see the output
+$ python3 python_monitor.py
